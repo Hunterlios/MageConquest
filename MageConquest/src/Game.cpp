@@ -7,6 +7,8 @@ Game::Game()
 	this->window->setFramerateLimit(60);
 	this->event = Event();
 	this->pTexture = new Texture;
+	this->backgroundTexture.loadFromFile("Mapa_MageConquest.png");
+	this->backgroundSprite.setTexture(backgroundTexture);
 	this->pTexture->loadFromFile("Mage.png");
 	this->player = new Player(this->window, this->pTexture);
 	this->camera = new Camera(this->window, this->player);
@@ -52,6 +54,7 @@ void Game::Update()
 void Game::Render()
 {
 	this->window->clear();
+	this->window->draw(this->backgroundSprite);
 	this->camera->Render();
 	this->player->Render();
 	this->window->display();

@@ -10,6 +10,8 @@ private:
 	Camera* camera;
 	Player* player;
 	Texture* pTexture;
+	Texture backgroundTexture;
+	Sprite backgroundSprite;
 	Event event;
 	Clock clock;
 	Time deltaTime;

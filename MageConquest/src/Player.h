@@ -14,6 +14,5 @@ public:
 	void Render();
 	Player(RenderWindow* window, Texture* pTexture);
 	~Player();
-	
 };
 
