@@ -10,8 +10,5 @@ public:
 	TextureLoader(string textureName);
 	~TextureLoader();
 	bool loadTexture(string textureName);
-	
-
-
 };
 

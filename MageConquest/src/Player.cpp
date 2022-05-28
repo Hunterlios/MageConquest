@@ -5,6 +5,7 @@ RectangleShape Player::getShape()
 	return shape;
 }
 
+
 void Player::Update(float deltaTime)
 {
 	if (Keyboard::isKeyPressed(Keyboard::A))
