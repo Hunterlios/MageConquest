@@ -1,5 +1,4 @@
 #pragma once
-#include"TextureLoader.h"
 #include"Player.h"
 #include"Camera.h"
 
@@ -8,9 +7,9 @@ class Game
 {
 private:
 	RenderWindow* window;
-	TextureLoader* backgroundTexture;
 	Camera* camera;
 	Player* player;
+	Texture* pTexture;
 	Event event;
 	Clock clock;
 	Time deltaTime;

@@ -31,11 +31,13 @@ void Player::Render()
 	window->draw(shape);
 }
 
-Player::Player(RenderWindow* window)
+
+Player::Player(RenderWindow* window, Texture* pTexture)
 {
 	this->window = window;
 	this->shape.setSize(Vector2f(15.f, 25.f));
 	this->shape.setPosition(Vector2f(window->getSize().x / 2.f, window->getSize().y / 2.f));
+	this->shape.setTexture(pTexture);
 }
 
 Player::~Player()

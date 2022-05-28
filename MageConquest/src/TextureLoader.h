@@ -1,14 +1,10 @@
-#include "pch.h"
-
+#pragma once
+#include"pch.h"
 class TextureLoader
 {
-
-public:
+private:
 	Texture texture;
-	Sprite sprite;
-	string textureName;
-	TextureLoader(string textureName);
-	~TextureLoader();
-	bool loadTexture(string textureName);
+
+
 };
 
