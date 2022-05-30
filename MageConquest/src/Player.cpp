@@ -32,14 +32,18 @@ void Player::Render()
 }
 
 
-Player::Player(RenderWindow* window, Texture* pTexture)
+Player::Player(RenderWindow* window)
 {
 	this->window = window;
+	this->pTexture = new TextureLoader("Mage.png");
+	this->pTex = pTexture->getTexture();
 	this->shape.setSize(Vector2f(15.f, 25.f));
 	this->shape.setPosition(Vector2f(window->getSize().x / 2.f, window->getSize().y / 2.f));
-	this->shape.setTexture(pTexture);
+	this->shape.setTexture(&pTex);
+
 }
 
 Player::~Player()
 {
+	delete this->pTexture;
 }

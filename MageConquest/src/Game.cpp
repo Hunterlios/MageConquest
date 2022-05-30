@@ -6,11 +6,8 @@ Game::Game()
 	this->window->setKeyRepeatEnabled(true);
 	this->window->setFramerateLimit(60);
 	this->event = Event();
-	this->pTexture = new Texture;
-	this->backgroundTexture.loadFromFile("Mapa_MageConquest.png");
-	this->backgroundSprite.setTexture(backgroundTexture);
-	this->pTexture->loadFromFile("Mage.png");
-	this->player = new Player(this->window, this->pTexture);
+	this->bTexture = new TextureLoader("Mapa_MageConquest.png");
+	this->player = new Player(this->window);
 	this->camera = new Camera(this->window, this->player);
 }
 
@@ -19,7 +16,7 @@ Game::~Game()
 	delete this->window;
 	delete this->camera;
 	delete this->player;
-	delete this->pTexture;
+	delete this->bTexture;
 }
 
 void Game::Run()
@@ -54,7 +51,7 @@ void Game::Update()
 void Game::Render()
 {
 	this->window->clear();
-	this->window->draw(this->backgroundSprite);
+	this->window->draw(this->bTexture->getSprite());
 	this->camera->Render();
 	this->player->Render();
 	this->window->display();

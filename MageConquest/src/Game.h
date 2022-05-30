@@ -9,9 +9,7 @@ private:
 	RenderWindow* window;
 	Camera* camera;
 	Player* player;
-	Texture* pTexture;
-	Texture backgroundTexture;
-	Sprite backgroundSprite;
+	TextureLoader* bTexture;
 	Event event;
 	Clock clock;
 	Time deltaTime;

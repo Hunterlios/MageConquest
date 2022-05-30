@@ -7,8 +7,10 @@ private:
 	Sprite sprite;
 
 public:
-	//TextureLoader();
-	//~TextureLoader();
+	Texture getTexture();
+	Sprite getSprite();
+	TextureLoader(string textureName);
+	~TextureLoader();
 
 
 };
