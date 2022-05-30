@@ -3,13 +3,15 @@
 class TextureLoader
 {
 private:
-	Texture texture;
-	Sprite sprite;
+	Texture *playerTexture, backgroundTexture;
+	Sprite bgSprite;
+	map<string, Texture*> textures;
 
 public:
-	Texture getTexture();
-	Sprite getSprite();
-	TextureLoader(string textureName);
+	TextureLoader();
+	void loadTextures();
+	Texture* getTexture(string textureName);
+	Sprite getbgSprite();
 	~TextureLoader();
 
 

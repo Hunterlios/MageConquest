@@ -24,6 +24,10 @@ void Player::Update(float deltaTime)
 	{
 		this->shape.move(Vector2f(0.f, 200.f * deltaTime));
 	}
+	
+	this->updateWindowBoundsCollision(window);
+
+	
 }
 
 void Player::Render()
@@ -31,19 +35,37 @@ void Player::Render()
 	window->draw(shape);
 }
 
+void Player::updateWindowBoundsCollision(RenderWindow* window)
+{
+	if (this->shape.getGlobalBounds().left <= 0.f)
+	{
+		this->shape.setPosition(0.f, shape.getGlobalBounds().top);
+	}
+	if (this->shape.getGlobalBounds().left + this->shape.getGlobalBounds().width >= window->getSize().x)
+	{
+		this->shape.setPosition(window->getSize().x - shape.getGlobalBounds().width, shape.getGlobalBounds().top);
+	}
+	if (this->shape.getGlobalBounds().top <= 0.f)
+	{
+		this->shape.setPosition(this->shape.getGlobalBounds().left, 0.f);
+	}
+	if (this->shape.getGlobalBounds().top + this->shape.getGlobalBounds().height >= window->getSize().y)
+	{
+		this->shape.setPosition(shape.getGlobalBounds().left, window->getSize().y - shape.getGlobalBounds().height);
+	}
+	
+}
+
 
 Player::Player(RenderWindow* window)
 {
 	this->window = window;
-	this->pTexture = new TextureLoader("Mage.png");
-	this->pTex = pTexture->getTexture();
+	this->shape.setTexture(this->tex.getTexture("pTexture"));
 	this->shape.setSize(Vector2f(15.f, 25.f));
 	this->shape.setPosition(Vector2f(window->getSize().x / 2.f, window->getSize().y / 2.f));
-	this->shape.setTexture(&pTex);
 
 }
 
 Player::~Player()
 {
-	delete this->pTexture;
 }

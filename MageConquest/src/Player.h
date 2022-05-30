@@ -7,13 +7,13 @@ class Player
 private:
 	RenderWindow* window;
 	RectangleShape shape;
-	TextureLoader* pTexture;
-	Texture pTex;
+	TextureLoader tex;
 	
 public:
 	RectangleShape getShape();
 	void Update(float deltaTime);
 	void Render();
+	void updateWindowBoundsCollision(RenderWindow* window);
 	Player(RenderWindow* window);
 	~Player();
 };

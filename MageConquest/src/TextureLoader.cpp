@@ -1,22 +1,34 @@
 #include "TextureLoader.h"
 
 
-Texture TextureLoader::getTexture()
+
+TextureLoader::TextureLoader()
 {
-	return this->texture;
+	this->playerTexture = new Texture;
+	this->loadTextures();
+	this->textures.insert({ "pTexture", playerTexture });
 }
 
-Sprite TextureLoader::getSprite()
+void TextureLoader::loadTextures()
 {
-	return this->sprite;
+	this->playerTexture->loadFromFile("Mage.png");
+	this->backgroundTexture.loadFromFile("Mapa_MageConquest.png");
 }
 
-TextureLoader::TextureLoader(string textureName)
+Texture* TextureLoader::getTexture(string textureName)
 {
-	this->texture.loadFromFile(textureName);
-	this->sprite.setTexture(texture);
+	return this->textures.at(textureName);
 }
+
+Sprite TextureLoader::getbgSprite()
+{
+	this->bgSprite.setTexture(this->backgroundTexture);
+	return this->bgSprite;
+}
+
+
 
 TextureLoader::~TextureLoader()
 {
+	delete this->playerTexture;
 }
