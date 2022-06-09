@@ -5,6 +5,11 @@ RectangleShape Player::getShape()
 	return shape;
 }
 
+Vector2f Player::getPosition()
+{
+	return this->shape.getPosition();
+}
+
 
 void Player::Update(float deltaTime)
 {
@@ -57,10 +62,10 @@ void Player::updateWindowBoundsCollision(RenderWindow* window)
 }
 
 
-Player::Player(RenderWindow* window)
+Player::Player(RenderWindow* window, ResourcesManager& resManager)
 {
 	this->window = window;
-	this->shape.setTexture(this->tex.getTexture("pTexture"));
+	this->shape.setTexture(&resManager.GetTexture("playerTexture"));
 	this->shape.setSize(Vector2f(15.f, 25.f));
 	this->shape.setPosition(Vector2f(window->getSize().x / 2.f, window->getSize().y / 2.f));
 

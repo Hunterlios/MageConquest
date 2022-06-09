@@ -2,8 +2,13 @@
 #include<iostream>
 #include<string>
 #include<map>
+#include<vector>
 #include<SFML/Graphics.hpp>
 #include"SFML/Window.hpp"
 #include"SFML/System.hpp"
 using namespace std;
 using namespace sf;
+
+const string BACKGROUND = "./resources/Mapa_MageConquest.png";
+const string PLAYER_TEXTURE = "./resources/Mage.png";
+const string RAT_TEXTURE = "./resources/Rat.png";

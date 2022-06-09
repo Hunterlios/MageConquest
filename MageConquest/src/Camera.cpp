@@ -30,7 +30,7 @@ Camera::Camera(RenderWindow* window, Player* player)
 {
 	this->player = player;
     this->window = window;
-    view.setSize(Vector2f(680.f, 360.f));
+    view.setSize(Vector2f(640.f, 360.f));
 }
 
 

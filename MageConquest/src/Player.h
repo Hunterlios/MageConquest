@@ -1,20 +1,21 @@
 #pragma once
-#include"pch.h"
-#include"TextureLoader.h"
+#include"ResourcesManager.h"
 
 class Player
 {
 private:
 	RenderWindow* window;
 	RectangleShape shape;
-	TextureLoader tex;
+	Vector2f position;
+
 	
 public:
 	RectangleShape getShape();
+	Vector2f getPosition();
 	void Update(float deltaTime);
 	void Render();
 	void updateWindowBoundsCollision(RenderWindow* window);
-	Player(RenderWindow* window);
+	Player(RenderWindow* window, ResourcesManager& resManager);
 	~Player();
 };
 

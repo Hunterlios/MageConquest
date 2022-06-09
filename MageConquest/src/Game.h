@@ -1,6 +1,7 @@
 #pragma once
 #include"Player.h"
 #include"Camera.h"
+#include"EnemySystem.h"
 
 
 class Game
@@ -9,8 +10,9 @@ private:
 	RenderWindow* window;
 	Camera* camera;
 	Player* player;
-	TextureLoader tex;
 	Sprite background;
+	EnemySystem* enemySystem;
+	ResourcesManager resManager;
 	Event event;
 	Clock clock;
 	Time deltaTime;
@@ -19,6 +21,7 @@ public:
 	~Game();
 	void Run();
 	void UpdateEvents();
+	void LoadResources();
 	void Update();
 	void Render();
 };
