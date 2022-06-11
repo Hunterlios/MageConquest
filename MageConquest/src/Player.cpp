@@ -7,12 +7,19 @@ RectangleShape Player::getShape()
 
 Vector2f Player::getPosition()
 {
-	return this->shape.getPosition();
+	return Vector2f(shape.getPosition().x + (shape.getSize().x/2), shape.getPosition().y + (shape.getSize().y / 2));
 }
 
 
-void Player::Update(float deltaTime)
+void Player::Update(float deltaTime, ResourcesManager& resManager)
 {
+	this->mousePosition = Vector2f(Mouse::getPosition());
+	this->aimDir = mousePosition - this->getPosition();
+	this->aimDirNorm.x = aimDir.x / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+	this->aimDirNorm.y = aimDir.y / sqrt(pow(aimDir.x, 2) + pow(aimDir.y, 2));
+
+	this->elapseShootTimer = cooldown.getElapsedTime();
+
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
 		this->shape.move(Vector2f(-200.f * deltaTime, 0.f));
@@ -29,14 +36,30 @@ void Player::Update(float deltaTime)
 	{
 		this->shape.move(Vector2f(0.f, 200.f * deltaTime));
 	}
+
+	if (Mouse::isButtonPressed(Mouse::Left) && elapseShootTimer.asSeconds()>=0.4f)
+	{
+		this->shots.push_back(new Fireball(window, resManager, getPosition()));
+		this->cooldown.restart();
+	}
 	
 	this->updateWindowBoundsCollision(window);
 
-	
+	for (int i = 0; i < shots.size(); i++)
+	{
+		shots[i]->getShape().move(shots[i]->getPosition(aimDirNorm, deltaTime));
+	}
 }
 
 void Player::Render()
 {
+
+	for (int i = 0; i < shots.size(); i++)
+	{
+		shots[i]->Render();
+	}
+
+
 	window->draw(shape);
 }
 
@@ -73,4 +96,10 @@ Player::Player(RenderWindow* window, ResourcesManager& resManager)
 
 Player::~Player()
 {
+	for (int i = 0; i < shots.size(); i++)
+	{
+		delete this->shots[i];
+	}
+
+	this->shots.clear();
 }

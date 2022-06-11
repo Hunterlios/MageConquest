@@ -1,5 +1,5 @@
 #include "ResourcesManager.h"
-//ResourcesManager resManager;
+
 ResourcesManager::ResourcesManager()
 {
 }
