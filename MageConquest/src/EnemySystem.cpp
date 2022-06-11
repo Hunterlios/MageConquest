@@ -7,7 +7,13 @@ EnemySystem::EnemySystem(RenderWindow* window)
 
 EnemySystem::~EnemySystem()
 {
+	for (int i = 0; i < activeEnemies.size(); i++)
+	{
+		delete this->activeEnemies[i];
+	}
+
 	this->activeEnemies.clear();
+	
 }
 
 void EnemySystem::createEnemy(EnemyTypes type, ResourcesManager& resManager)

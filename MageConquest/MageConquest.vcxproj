@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Fireball.cpp" />
     <ClCompile Include="src\EnemySystem.cpp" />
     <ClCompile Include="src\Rat.cpp" />
     <ClCompile Include="src\ResourcesManager.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Fireball.h" />
     <ClInclude Include="src\EnemySystem.h" />
     <ClInclude Include="src\Rat.h" />
     <ClInclude Include="src\Enemies_include.h" />

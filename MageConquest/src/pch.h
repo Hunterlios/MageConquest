@@ -6,9 +6,12 @@
 #include<SFML/Graphics.hpp>
 #include"SFML/Window.hpp"
 #include"SFML/System.hpp"
+#include<cmath>
+#include<math.h>
 using namespace std;
 using namespace sf;
 
 const string BACKGROUND = "./resources/Mapa_MageConquest.png";
 const string PLAYER_TEXTURE = "./resources/Mage.png";
 const string RAT_TEXTURE = "./resources/Rat.png";
+const string FIREBALL_TEXTURE = "./resources/Fireball.png";

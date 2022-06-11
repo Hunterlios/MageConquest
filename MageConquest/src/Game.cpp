@@ -49,13 +49,14 @@ void Game::LoadResources()
 	resManager.LoadTexture("playerTexture", PLAYER_TEXTURE);
 	resManager.LoadTexture("background", BACKGROUND);
 	resManager.LoadTexture("ratTexture", RAT_TEXTURE);
+	resManager.LoadTexture("fireball", FIREBALL_TEXTURE);
 }
 
 
 void Game::Update()
 {
 	this->deltaTime = clock.restart();
-	this->player->Update(deltaTime.asSeconds());
+	this->player->Update(deltaTime.asSeconds(), this->resManager);
 	this->camera->Update();
 	this->enemySystem->Update(deltaTime.asSeconds());
 }
