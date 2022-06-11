@@ -32,7 +32,6 @@ void Player::Update(float deltaTime)
 	
 	this->updateWindowBoundsCollision(window);
 
-	
 }
 
 void Player::Render()

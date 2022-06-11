@@ -12,8 +12,6 @@ public:
     ~Rat();
     
 
-
-
     // Odziedziczono za poœrednictwem elementu Enemy
     virtual void Update(float deltaTime) override;
 

@@ -25,6 +25,10 @@ void EnemySystem::createEnemy(EnemyTypes type, ResourcesManager& resManager)
 
 void EnemySystem::Update(float deltaTime)
 {
+	for (int i = 0; i < activeEnemies.size(); i++)
+	{
+		activeEnemies[i]->Update(deltaTime);
+	}
 	
 }
 

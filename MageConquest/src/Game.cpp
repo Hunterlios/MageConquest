@@ -57,6 +57,7 @@ void Game::Update()
 	this->deltaTime = clock.restart();
 	this->player->Update(deltaTime.asSeconds());
 	this->camera->Update();
+	this->enemySystem->Update(deltaTime.asSeconds());
 }
 
 void Game::Render()

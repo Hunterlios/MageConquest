@@ -19,6 +19,7 @@ void Rat::Render()
 
 void Rat::Update(float deltaTime)
 {
+	this->shape.move(Vector2f(10.f * deltaTime, 3.f * deltaTime));
 }
 
 

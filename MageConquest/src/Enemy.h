@@ -1,6 +1,7 @@
 #pragma once
 #include"pch.h"
 #include"ResourcesManager.h"
+#include"Player.h"
 class Enemy
 {
 private:
