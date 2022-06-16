@@ -29,13 +29,28 @@ void EnemySystem::createEnemy(EnemyTypes type, ResourcesManager& resManager)
 	}
 }
 
-void EnemySystem::Update(float deltaTime)
+void EnemySystem::intersection(vector<Fireball*>& shots)
+{
+	for (int i = 0; i < activeEnemies.size(); i++)
+	{
+		for (int j = 0; j < shots.size(); j++)
+		{
+			if (activeEnemies[i]->getShape().getGlobalBounds().intersects(shots[j]->getShape().getGlobalBounds()))
+			{
+				activeEnemies.erase(activeEnemies.begin() + i);
+				shots.erase(shots.begin() + j);
+			}
+		}
+	}
+}
+
+void EnemySystem::Update(float deltaTime, vector<Fireball*>& shots)
 {
 	for (int i = 0; i < activeEnemies.size(); i++)
 	{
 		activeEnemies[i]->Update(deltaTime);
 	}
-	
+	this->intersection(shots);
 }
 
 void EnemySystem::Render()

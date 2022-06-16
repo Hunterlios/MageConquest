@@ -1,6 +1,6 @@
 #pragma once
 #include"ResourcesManager.h"
-#include "Fireball.h"
+#include"Fireball.h"
 
 class Player
 {
@@ -8,7 +8,6 @@ private:
 	RenderWindow* window;
 	RectangleShape shape;
 	Vector2f position;
-	vector<Fireball*> shots;
 	Clock cooldown;
 	Time elapseShootTimer;
 	Vector2f mousePosition;
@@ -19,6 +18,7 @@ private:
 	Vector2f worldPos;
 	
 public:
+	vector<Fireball*> shots;
 	RectangleShape getShape();
 	Vector2f getCenter();
 	void Update(float deltaTime, ResourcesManager& resManager);

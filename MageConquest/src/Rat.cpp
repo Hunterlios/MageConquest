@@ -17,6 +17,11 @@ void Rat::Render()
 	this->window->draw(shape);
 }
 
+RectangleShape Rat::getShape()
+{
+	return shape;
+}
+
 void Rat::Update(float deltaTime)
 {
 	this->shape.move(Vector2f(10.f * deltaTime, 3.f * deltaTime));

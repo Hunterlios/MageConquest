@@ -17,5 +17,7 @@ public:
 
     virtual void Render() override;
 
+    virtual RectangleShape getShape() override;
+
 };
 

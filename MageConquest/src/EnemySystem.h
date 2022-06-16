@@ -1,5 +1,6 @@
 #pragma once
 #include"Rat.h"
+#include"Player.h"
 
 enum EnemyTypes
 {
@@ -16,7 +17,8 @@ public:
 	EnemySystem(RenderWindow* window);
 	~EnemySystem();
 	void createEnemy(EnemyTypes type, ResourcesManager& resManager);
-	void Update(float deltaTime);
+	void intersection(vector<Fireball*>& shots);
+	void Update(float deltaTime, vector<Fireball*>& shots);
 	void Render();
 };
  

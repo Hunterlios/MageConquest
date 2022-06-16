@@ -40,13 +40,6 @@ void Game::UpdateEvents()
 		{
 			this->window->close();
 		}
-		if (this->event.type == Event::MouseButtonPressed)
-		{
-			if (Mouse::isButtonPressed(Mouse::Left))
-			{
-				this->player->getMousePos();
-			}
-		}
 	}
 	
 }
@@ -65,7 +58,7 @@ void Game::Update()
 	this->deltaTime = clock.restart();
 	this->player->Update(deltaTime.asSeconds(), this->resManager);
 	this->camera->Update();
-	this->enemySystem->Update(deltaTime.asSeconds());
+	this->enemySystem->Update(deltaTime.asSeconds(), this->player->shots);
 }
 
 void Game::Render()

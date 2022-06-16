@@ -14,7 +14,7 @@ Vector2f Player::getCenter()
 void Player::Update(float deltaTime, ResourcesManager& resManager)
 {
 	
-	this->updateFireballWindowCollision();
+	
 	this->elapseShootTimer = cooldown.getElapsedTime();
 
 	if (Keyboard::isKeyPressed(Keyboard::A))
@@ -36,6 +36,7 @@ void Player::Update(float deltaTime, ResourcesManager& resManager)
 
 	if (Mouse::isButtonPressed(Mouse::Left) && elapseShootTimer.asSeconds()>=0.5f)
 	{
+		this->getMousePos();
 		this->velocity = aimDirNorm * deltaTime * 300.f;
 		this->shots.push_back(new Fireball(window, resManager, getCenter(), velocity));
 		this->cooldown.restart();
@@ -46,9 +47,8 @@ void Player::Update(float deltaTime, ResourcesManager& resManager)
 		shots[i]->Update();
 	}
 	
-	
 	this->updateWindowBoundsCollision();
-
+	this->updateFireballWindowCollision();
 }
 
 void Player::Render()

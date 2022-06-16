@@ -62,9 +62,6 @@
     <ClInclude Include="src\ResourcesManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies_include.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="src\Rat.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
