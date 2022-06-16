@@ -1,8 +1,8 @@
 #include "Fireball.h"
 
-void Fireball::Update(float deltaTime, Vector2f aimDirNorm)
+void Fireball::Update()
 {
-	this->moveBall(aimDirNorm, deltaTime);
+	this->moveBall();
 }
 
 void Fireball::Render()
@@ -10,9 +10,9 @@ void Fireball::Render()
 	this->window->draw(shape);
 }
 
-void Fireball::moveBall(Vector2f aimDirNorm, float deltaTime)
+void Fireball::moveBall()
 {
-	this->shape.move(Vector2f(aimDirNorm.x*deltaTime*10.f, aimDirNorm.y*deltaTime*10.f));
+	this->shape.move(this->velocity);
 }
 
 CircleShape Fireball::getShape()
@@ -20,9 +20,10 @@ CircleShape Fireball::getShape()
 	return this->shape;
 }
 
-Fireball::Fireball(RenderWindow* window, ResourcesManager& resManager, Vector2f playerPosition)
+Fireball::Fireball(RenderWindow* window, ResourcesManager& resManager, Vector2f playerPosition, Vector2f velocity)
 {
 	this->window = window;
+	this->velocity = velocity;
 	this->shape.setRadius(6.f);
 	this->shape.setPosition(playerPosition);
 	this->shape.setTexture(&resManager.GetTexture("fireball"));
@@ -30,10 +31,5 @@ Fireball::Fireball(RenderWindow* window, ResourcesManager& resManager, Vector2f 
 
 Fireball::~Fireball()
 {
-
 }
 
-Vector2f Fireball::getPosition(Vector2f aimDirNorm, float deltaTime)
-{
-	return Vector2f(aimDirNorm.x * deltaTime * 10.f, aimDirNorm.y * deltaTime * 10.f);
-}

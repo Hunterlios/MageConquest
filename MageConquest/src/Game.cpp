@@ -40,6 +40,13 @@ void Game::UpdateEvents()
 		{
 			this->window->close();
 		}
+		if (this->event.type == Event::MouseButtonPressed)
+		{
+			if (Mouse::isButtonPressed(Mouse::Left))
+			{
+				this->player->getMousePos();
+			}
+		}
 	}
 	
 }

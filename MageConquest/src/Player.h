@@ -14,14 +14,18 @@ private:
 	Vector2f mousePosition;
 	Vector2f aimDir;
 	Vector2f aimDirNorm;
+	Vector2f velocity;
+	Vector2i pixelPos;
+	Vector2f worldPos;
 	
 public:
 	RectangleShape getShape();
-	Vector2f getPosition();
+	Vector2f getCenter();
 	void Update(float deltaTime, ResourcesManager& resManager);
 	void Render();
-	void updateWindowBoundsCollision(RenderWindow* window);
+	void updateWindowBoundsCollision();
+	void updateFireballWindowCollision();
+	void getMousePos();
 	Player(RenderWindow* window, ResourcesManager& resManager);
 	~Player();
 };
-

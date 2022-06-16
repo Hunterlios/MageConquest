@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-#include"ResourcesManager.h"
+#include "ResourcesManager.h"
 
 
 class Fireball
@@ -9,16 +9,16 @@ private:
 	RenderWindow* window;
 	CircleShape shape;
 	Vector2f position;
+	Vector2f velocity;
 
 
 public:
-	void Update(float deltaTime, Vector2f aimDirNorm);
+	void Update();
 	void Render();
-	void moveBall(Vector2f aimDirNorm, float deltaTime);
+	void moveBall();
 	CircleShape getShape();
-	Fireball(RenderWindow* window, ResourcesManager& resManager, Vector2f playerPosition);
+	Fireball(RenderWindow* window, ResourcesManager& resManager, Vector2f playerPosition, Vector2f velocity);
 	~Fireball();
-	Vector2f getPosition(Vector2f aimDirNorm, float deltaTime);
 
 };
 
