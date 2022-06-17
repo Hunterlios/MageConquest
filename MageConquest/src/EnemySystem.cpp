@@ -44,11 +44,11 @@ void EnemySystem::intersection(vector<Fireball*>& shots)
 	}
 }
 
-void EnemySystem::Update(float deltaTime, vector<Fireball*>& shots)
+void EnemySystem::Update(float deltaTime, vector<Fireball*>& shots, Vector2f playerCenter)
 {
 	for (int i = 0; i < activeEnemies.size(); i++)
 	{
-		activeEnemies[i]->Update(deltaTime);
+		activeEnemies[i]->Update(deltaTime, playerCenter);
 	}
 	this->intersection(shots);
 }

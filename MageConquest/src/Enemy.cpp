@@ -4,7 +4,7 @@ Enemy::Enemy()
 {
 }
 
-Enemy::Enemy(RenderWindow* window)
+Enemy::Enemy(RenderWindow* window, ResourcesManager& resManager)
 {
 	this->window = window;
 }

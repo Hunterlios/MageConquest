@@ -8,7 +8,11 @@ Game::Game()
 	this->window->setFramerateLimit(60);
 	this->event = Event();
 	this->enemySystem = new EnemySystem(this->window);
-	this->enemySystem->createEnemy(RAT, this->resManager);
+	// XDDDDD KURWA INWAZJA JAKAŒ SZCZURÓW
+	for (int i = 0; i < 100; i++)
+	{
+		this->enemySystem->createEnemy(RAT, this->resManager);
+	}
 	this->background.setTexture(this->resManager.GetTexture("background"));
 	this->player = new Player(this->window, this->resManager);
 	this->camera = new Camera(this->window, this->player);
@@ -58,7 +62,7 @@ void Game::Update()
 	this->deltaTime = clock.restart();
 	this->player->Update(deltaTime.asSeconds(), this->resManager);
 	this->camera->Update();
-	this->enemySystem->Update(deltaTime.asSeconds(), this->player->shots);
+	this->enemySystem->Update(deltaTime.asSeconds(), this->player->shots, player->getCenter());
 }
 
 void Game::Render()
