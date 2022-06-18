@@ -8,8 +8,7 @@ Game::Game()
 	this->window->setFramerateLimit(60);
 	this->event = Event();
 	this->enemySystem = new EnemySystem(this->window);
-	// XDDDDD KURWA INWAZJA JAKAŒ SZCZURÓW
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		this->enemySystem->createEnemy(RAT, this->resManager);
 	}

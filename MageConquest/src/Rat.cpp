@@ -19,6 +19,16 @@ Vector2f Rat::generatePos()
 	return Vector2f(x, y);
 }
 
+Vector2f Rat::getVelocity()
+{
+	return velocity;
+}
+
+void Rat::setPos(Vector2f pos)
+{
+	shape.setPosition(pos);
+}
+
 void Rat::Render()
 {
 	this->window->draw(shape);
@@ -34,7 +44,8 @@ void Rat::Update(float deltaTime, Vector2f playerCenter)
 	dir = playerCenter - Vector2f(shape.getPosition().x + (shape.getSize().x / 2), shape.getPosition().y + (shape.getSize().y / 2));
 	dirNorm.x = dir.x / sqrt(pow(dir.x, 2) + pow(dir.y, 2));
 	dirNorm.y = dir.y / sqrt(pow(dir.x, 2) + pow(dir.y, 2));
-	this->shape.move(Vector2f(dirNorm * deltaTime * 100.f));
+	velocity = dirNorm * deltaTime * 100.f;
+	this->shape.move(velocity);
 }
 
 

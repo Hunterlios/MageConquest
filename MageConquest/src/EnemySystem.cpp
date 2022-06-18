@@ -18,10 +18,13 @@ EnemySystem::~EnemySystem()
 
 void EnemySystem::createEnemy(EnemyTypes type, ResourcesManager& resManager)
 {
+	Enemy* enemy;
 	switch (type)
 	{
 	case EnemyTypes::RAT:
-		this->activeEnemies.push_back(new Rat(window, resManager));
+		enemy = new Rat(window, resManager);
+		this->activeEnemies.push_back(enemy);
+		
 		break;
 	default:
 		cout << "ERROR TYPE OF ENEMY DOES NOT EXIST\n";
@@ -49,6 +52,7 @@ void EnemySystem::Update(float deltaTime, vector<Fireball*>& shots, Vector2f pla
 	for (int i = 0; i < activeEnemies.size(); i++)
 	{
 		activeEnemies[i]->Update(deltaTime, playerCenter);
+		activeEnemies[i]->collision(activeEnemies[i], activeEnemies);
 	}
 	this->intersection(shots);
 }
@@ -59,5 +63,4 @@ void EnemySystem::Render()
 	{
 		activeEnemies[i]->Render();
 	}
-	
 }

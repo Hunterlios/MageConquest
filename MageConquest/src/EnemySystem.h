@@ -12,7 +12,6 @@ class EnemySystem
 private:
 	RenderWindow* window;
 	vector<Enemy*> activeEnemies;
-
 public:
 	EnemySystem(RenderWindow* window);
 	~EnemySystem();
