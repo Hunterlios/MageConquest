@@ -145,6 +145,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Help.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\PlayerGUI.cpp" />
+    <ClCompile Include="src\Skeleton.cpp" />
+    <ClCompile Include="src\Goblin.cpp" />
     <ClCompile Include="src\Fireball.cpp" />
     <ClCompile Include="src\EnemySystem.cpp" />
     <ClCompile Include="src\Rat.cpp" />
@@ -154,8 +159,15 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Vampire.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Help.h" />
+    <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\PlayerGUI.h" />
+    <ClInclude Include="src\Skeleton.h" />
+    <ClInclude Include="src\Enemies.h" />
+    <ClInclude Include="src\Goblin.h" />
     <ClInclude Include="src\Fireball.h" />
     <ClInclude Include="src\EnemySystem.h" />
     <ClInclude Include="src\Rat.h" />
@@ -165,6 +177,7 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Vampire.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

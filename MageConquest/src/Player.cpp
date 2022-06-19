@@ -10,28 +10,26 @@ Vector2f Player::getCenter()
 	return Vector2f(shape.getPosition().x + (shape.getSize().x/2), shape.getPosition().y + (shape.getSize().y / 2));
 }
 
-
-void Player::Update(float deltaTime, ResourcesManager& resManager)
+void Player::Update(float deltaTime, ResourcesManager& resManager, vector<Enemy*> enemies)
 {
-	
-	
 	this->elapseShootTimer = cooldown.getElapsedTime();
+	this->elapseDamageTimer = damageCooldown.getElapsedTime();
 
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
-		this->shape.move(Vector2f(-150.f * deltaTime, 0.f));
+		this->shape.move(Vector2f(-120.f * deltaTime, 0.f));
 	}
 	if (Keyboard::isKeyPressed(Keyboard::D))
 	{
-		this->shape.move(Vector2f(150.f * deltaTime, 0.f));
+		this->shape.move(Vector2f(120.f * deltaTime, 0.f));
 	}
 	if (Keyboard::isKeyPressed(Keyboard::W))
 	{
-		this->shape.move(Vector2f(0.f, -150.f * deltaTime));
+		this->shape.move(Vector2f(0.f, -120.f * deltaTime));
 	}
 	if (Keyboard::isKeyPressed(Keyboard::S))
 	{
-		this->shape.move(Vector2f(0.f, 150.f * deltaTime));
+		this->shape.move(Vector2f(0.f, 120.f * deltaTime));
 	}
 
 	if (Mouse::isButtonPressed(Mouse::Left) && elapseShootTimer.asSeconds()>=0.5f)
@@ -49,6 +47,7 @@ void Player::Update(float deltaTime, ResourcesManager& resManager)
 	
 	this->updateWindowBoundsCollision();
 	this->updateFireballWindowCollision();
+	this->updateEnemyCollision(enemies);
 }
 
 void Player::Render()
@@ -96,6 +95,41 @@ void Player::updateFireballWindowCollision()
 	
 }
 
+void Player::updateEnemyCollision(vector<Enemy*> enemies)
+{
+	for (auto& enemy : enemies)
+	{
+		if (playerHp != 0 && elapseDamageTimer.asSeconds() >= 1.f)
+		{
+			if (shape.getGlobalBounds().intersects(enemy->getShape().getGlobalBounds()) && dynamic_cast<Rat*>(enemy) != nullptr)
+			{
+				this->playerHp -= 5;
+				this->damageCooldown.restart();
+			}
+			else if (shape.getGlobalBounds().intersects(enemy->getShape().getGlobalBounds()) && dynamic_cast<Goblin*>(enemy) != nullptr)
+			{
+				this->playerHp -= 10;
+				this->damageCooldown.restart();
+			}
+			else if (shape.getGlobalBounds().intersects(enemy->getShape().getGlobalBounds()) && dynamic_cast<Skeleton*>(enemy) != nullptr)
+			{
+				this->playerHp -= 15;
+				this->damageCooldown.restart();
+			}
+			else if (shape.getGlobalBounds().intersects(enemy->getShape().getGlobalBounds()) && dynamic_cast<Vampire*>(enemy) != nullptr)
+			{
+				this->playerHp -= 20;
+				this->damageCooldown.restart();
+			}
+		}
+		else if (playerHp <= 0)
+		{
+			this->window->close();
+		}
+	}
+
+}
+
 void Player::getMousePos()
 {
 	this->pixelPos = Mouse::getPosition(*window);
@@ -109,6 +143,7 @@ void Player::getMousePos()
 Player::Player(RenderWindow* window, ResourcesManager& resManager)
 {
 	this->window = window;
+	this->playerHp = 100;
 	this->shape.setTexture(&resManager.GetTexture("playerTexture"));
 	this->shape.setSize(Vector2f(15.f, 25.f));
 	this->shape.setPosition(Vector2f(window->getSize().x / 2.f, window->getSize().y / 2.f));

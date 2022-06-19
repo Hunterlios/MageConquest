@@ -1,7 +1,6 @@
 #pragma once
 #include"pch.h"
 #include"ResourcesManager.h"
-#include"Player.h"
 class Enemy
 {
 protected:
@@ -10,13 +9,16 @@ protected:
 	Vector2f dir;
 	Vector2f dirNorm;
 	float x, y;
+	int enemyHp;
 
 public:
 	Vector2f velocity;
 	Enemy();
 	Enemy(RenderWindow* window, ResourcesManager& resManager);
-	~Enemy();
-	void collision(Enemy* enemy, vector<Enemy*> enemies);
+	virtual ~Enemy();
+	void collision(vector<Enemy*> enemies);
+	int getHp();
+	void changeHp(int value);
 	virtual void setPos(Vector2f pos) = 0;
 	virtual Vector2f getVelocity() = 0;
 	virtual void Update(float deltaTime, Vector2f playerCenter) = 0;
