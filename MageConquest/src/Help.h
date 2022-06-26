@@ -1,6 +1,6 @@
 #pragma once
 #include"Game.h"
-class Help
+class Help : public State
 {
 	RenderWindow* window;
 	Text help[3];
@@ -11,7 +11,7 @@ public:
 	Help(RenderWindow* window, Font& font, ResourcesManager& resManager);
 	~Help();
 	int getPressedItem();
-	void Update();
+	void Update(float& deltaTime);
 	void Render();
 };
 

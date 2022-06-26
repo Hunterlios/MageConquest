@@ -62,6 +62,11 @@ void Player::Render()
 	window->draw(shape);
 }
 
+bool Player::isDead()
+{
+	return this->dead;
+}
+
 void Player::updateWindowBoundsCollision()
 {
 	if (this->shape.getGlobalBounds().left <= 0.f)
@@ -124,7 +129,7 @@ void Player::updateEnemyCollision(vector<Enemy*> enemies)
 		}
 		else if (playerHp <= 0)
 		{
-			this->window->close();
+			this->dead = true;
 		}
 	}
 
@@ -143,6 +148,8 @@ void Player::getMousePos()
 Player::Player(RenderWindow* window, ResourcesManager& resManager)
 {
 	this->window = window;
+	this->dead = false;
+	this->score = 0;
 	this->playerHp = 100;
 	this->shape.setTexture(&resManager.GetTexture("playerTexture"));
 	this->shape.setSize(Vector2f(15.f, 25.f));

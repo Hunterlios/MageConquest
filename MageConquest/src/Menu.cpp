@@ -21,7 +21,7 @@ Menu::~Menu()
 
 int Menu::getPressedItem()
 {
-	if (Mouse::isButtonPressed(Mouse::Left))
+	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
 		auto mousePosition = Mouse::getPosition(*window);
 		auto mousePositionInWindow = window->mapPixelToCoords(mousePosition);
@@ -41,17 +41,15 @@ int Menu::getPressedItem()
 	}
 }
 
-void Menu::Update()
+void Menu::Update(float& deltaTime)
 {
 }
 
 void Menu::Render()
 {
-	window->clear();
 	window->draw(background);
 	for (int i = 0; i < 3; i++)
 	{
 		window->draw(menu[i]);
 	}
-	window->display();
 }

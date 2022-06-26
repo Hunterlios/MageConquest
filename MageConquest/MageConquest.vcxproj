@@ -145,6 +145,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameOver.cpp" />
+    <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Help.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\PlayerGUI.cpp" />
@@ -160,8 +162,11 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Vampire.cpp" />
+    <ClCompile Include="src\State.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameOver.h" />
+    <ClInclude Include="src\App.h" />
     <ClInclude Include="src\Help.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\PlayerGUI.h" />
@@ -178,6 +183,7 @@
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Vampire.h" />
+    <ClInclude Include="src\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

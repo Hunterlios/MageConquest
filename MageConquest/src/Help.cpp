@@ -35,17 +35,15 @@ int Help::getPressedItem()
 	}
 }
 
-void Help::Update()
+void Help::Update(float& deltaTime)
 {
 }
 
 void Help::Render()
 {
-	window->clear();
 	window->draw(background);
 	for (int i = 0; i < 2; i++)
 	{
 		window->draw(help[i]);
 	}
-	window->display();
 }

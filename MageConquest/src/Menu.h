@@ -1,18 +1,20 @@
 #pragma once
 #include"Game.h"
-class Menu
+#include"Help.h"
+#include"GameOver.h"
+#include"State.h"
+class Menu : public State
 {
 private:
 	RenderWindow* window;
 	Text menu[3];
-	Font font;
 	Sprite background;
 
 public:
 	Menu(RenderWindow* window, Font& font, ResourcesManager& resManager);
-	~Menu();
+	virtual ~Menu();
 	int getPressedItem();
-	void Update();
+	void Update(float& deltaTime);
 	void Render();
 };
 

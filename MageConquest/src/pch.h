@@ -10,6 +10,7 @@
 #include<math.h>
 #include<cstdlib>
 #include<stack>
+#include<fstream>
 using namespace std;
 using namespace sf;
 

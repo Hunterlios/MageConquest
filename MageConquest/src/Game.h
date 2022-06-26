@@ -2,8 +2,9 @@
 #include"PlayerGUI.h"
 #include"Camera.h"
 #include"EnemySystem.h"
+#include"State.h"
 
-class Game
+class Game : public State
 {
 private:
 	RenderWindow* window;
@@ -14,17 +15,15 @@ private:
 	Font font;
 	EnemySystem* enemySystem;
 	ResourcesManager resManager;
-	Event event;
-	Clock clock;
-	Time deltaTime;
+	float deltaTime;
 
 public:
 	Game(RenderWindow* window, ResourcesManager& resManager, Font& font);
-	~Game();
-	void Run();
-	void UpdateEvents();
+	virtual ~Game();
+	bool isPlayerDead();
+	int getPlayerScore();
 	void spawnEnemy();
-	void Update();
+	void Update(float& deltaTime);
 	void Render();
 };
 

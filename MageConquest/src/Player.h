@@ -17,6 +17,7 @@ private:
 	Vector2f velocity;
 	Vector2i pixelPos;
 	Vector2f worldPos;
+	bool dead;
 	
 	
 public:
@@ -27,6 +28,7 @@ public:
 	Vector2f getCenter();
 	void Update(float deltaTime, ResourcesManager& resManager, vector<Enemy*> enemies);
 	void Render();
+	bool isDead();
 	void updateWindowBoundsCollision();
 	void updateFireballWindowCollision();
 	void updateEnemyCollision(vector<Enemy*> enemies);
