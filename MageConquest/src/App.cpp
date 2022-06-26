@@ -46,7 +46,7 @@ void App::UpdateEvents()
 		{
 			if (Mouse::isButtonPressed(Mouse::Button::Left))
 			{
-				if (gameRunning == false && helpRunning == false && gameOverRunning == false)
+				if (!gameRunning && !helpRunning && !gameOverRunning)
 				{
 					switch (menu->getPressedItem())
 					{
@@ -69,7 +69,7 @@ void App::UpdateEvents()
 					}
 				}
 				
-				if (gameRunning == false && helpRunning == true && gameOverRunning == false)
+				if (!gameRunning && helpRunning && !gameOverRunning)
 				{
 					switch (help->getPressedItem())
 					{
@@ -85,7 +85,7 @@ void App::UpdateEvents()
 					}
 				}
 
-				if (gameRunning == false && helpRunning == false && gameOverRunning == true)
+				if (!gameRunning && !helpRunning && gameOverRunning)
 				{		
 					switch (gameOver->getPressedItem())
 					{
@@ -111,7 +111,7 @@ void App::Update()
 	{
 		this->states.top()->Update(deltaTime);
 	}
-	if (this->playerAlive == true)
+	if (this->playerAlive)
 	{
 		if (this->game->isPlayerDead())
 		{
@@ -120,9 +120,9 @@ void App::Update()
 			this->gameRunning = false;
 		}
 	}
-	if (gameRunning == false && helpRunning == false && gameOverRunning == true)
+	if (!gameRunning && !helpRunning && gameOverRunning)
 	{
-		if (gameOverPushed == false)
+		if (!gameOverPushed)
 		{
 			this->gameOver = new GameOver(this->window, this->font, this->resManager, this->game->getPlayerScore());
 			delete this->states.top();
